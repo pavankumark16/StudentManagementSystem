@@ -1,0 +1,410 @@
+/* =========================================================
+   FACULTY DASHBOARD
+   ========================================================= */
+
+.faculty-dashboard {
+  min-height: 100vh;
+
+  padding: 35px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      var(--primary-soft),
+      transparent 28%
+    ),
+    var(--bg-primary);
+
+  color: var(--text-primary);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.faculty-dashboard-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.faculty-dashboard-header h1 {
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+
+  color: var(--text-primary);
+}
+
+.faculty-dashboard-header p {
+  margin: 7px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+   ========================================================= */
+
+.faculty-dashboard-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   THEME BUTTON
+   ========================================================= */
+
+.faculty-dashboard-theme-button {
+  min-height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 9px 14px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: var(--card-bg);
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.faculty-dashboard-theme-button:hover {
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--shadow-md);
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+.faculty-dashboard-logout {
+  min-height: 40px;
+
+  padding: 9px 16px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: rgba(220, 38, 38, 0.09);
+
+  color: var(--danger);
+
+  font-size: 12px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.faculty-dashboard-logout:hover {
+  background: rgba(220, 38, 38, 0.15);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 12px rgba(220, 38, 38, 0.10);
+}
+
+
+/* =========================================================
+   WELCOME CARD
+   ========================================================= */
+
+.faculty-welcome-card {
+  padding: 25px 28px;
+
+  margin-bottom: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary-soft),
+      var(--card-bg)
+    );
+
+  border-radius: 16px;
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.faculty-welcome-card h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 720;
+
+  color: var(--text-primary);
+}
+
+.faculty-welcome-card p {
+  margin: 7px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.faculty-dashboard-section h2 {
+  margin: 0 0 16px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.faculty-dashboard-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.faculty-dashboard-card {
+  padding: 24px;
+
+  background: var(--card-bg);
+
+  border-radius: 16px;
+
+  box-shadow: var(--shadow-md);
+
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.faculty-dashboard-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow-lg);
+
+  background: var(--bg-secondary);
+}
+
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
+
+.faculty-dashboard-card-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 17px;
+
+  border-radius: 12px;
+
+  background: var(--primary-soft);
+
+  font-size: 23px;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.faculty-dashboard-card h3 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+.faculty-dashboard-card p {
+  min-height: 42px;
+
+  margin: 8px 0 18px;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   CARD BUTTON
+   ========================================================= */
+
+.faculty-dashboard-card button {
+  padding: 8px 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: var(--primary-soft);
+
+  color: var(--primary);
+
+  font-size: 12px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.faculty-dashboard-card button:hover {
+  background: var(--primary);
+
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .faculty-dashboard {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(129, 140, 248, 0.08),
+      transparent 30%
+    ),
+    var(--bg-primary);
+}
+
+[data-theme="dark"] .faculty-dashboard-card:hover {
+  background: var(--bg-tertiary);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .faculty-dashboard {
+    padding: 20px;
+  }
+
+  .faculty-dashboard-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .faculty-dashboard {
+    padding: 16px;
+  }
+
+  .faculty-dashboard-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .faculty-dashboard-actions {
+    width: 100%;
+  }
+
+  .faculty-dashboard-theme-button,
+  .faculty-dashboard-logout {
+    flex: 1;
+  }
+
+  .faculty-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

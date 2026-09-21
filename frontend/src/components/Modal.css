@@ -1,0 +1,341 @@
+/* =========================================
+   PREMIUM EDIT MODAL (Light + Dark)
+========================================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  z-index:1000;
+
+  background:rgba(15,23,42,.55);
+  backdrop-filter:blur(10px);
+  animation:fadeIn .25s ease;
+}
+
+/* =========================================
+   MODAL CARD
+========================================= */
+
+.edit-modal{
+  width:100%;
+  max-width:760px;
+  max-height:90vh;
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+
+  border-radius:24px;
+
+  background:var(--card-bg-solid,#fff);
+  border:1px solid var(--border-color,#e5e7eb);
+
+  box-shadow:
+    0 30px 70px rgba(15,23,42,.22),
+    0 10px 25px rgba(15,23,42,.10);
+
+  animation:popIn .28s ease;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.edit-modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:24px 28px;
+
+  background:linear-gradient(135deg,#4f46e5,#2563eb);
+  color:#fff;
+}
+
+.edit-modal-header h2{
+  margin:0;
+  font-size:24px;
+  font-weight:700;
+}
+
+.edit-modal-header p{
+  margin:6px 0 0;
+  font-size:13px;
+  color:rgba(255,255,255,.82);
+}
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.modal-close-button{
+  width:42px;
+  height:42px;
+
+  border:none;
+  border-radius:12px;
+
+  background:rgba(255,255,255,.14);
+  color:#fff;
+
+  font-size:24px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.25s ease;
+}
+
+.modal-close-button:hover{
+  background:rgba(255,255,255,.25);
+  transform:rotate(90deg);
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+.edit-modal-body{
+  padding:28px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+
+  overflow-y:auto;
+
+  background:var(--card-bg-solid,#fff);
+}
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.form-group label{
+  font-size:13px;
+  font-weight:700;
+  color:var(--text-primary,#1f2937);
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  box-sizing:border-box;
+
+  padding:14px 16px;
+  min-height:50px;
+
+  border-radius:14px;
+  border:1px solid var(--border-color,#d1d5db);
+
+  background:var(--input-bg,#f8fafc);
+  color:var(--input-text,#111827);
+
+  font-size:14px;
+  font-family:inherit;
+
+  outline:none;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+.form-group textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder{
+  color:var(--input-placeholder,#94a3b8);
+}
+
+/* ---------- PREMIUM HOVER ---------- */
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover{
+  background:var(--card-bg-solid,#fff);
+  border-color:#7c93ff;
+  transform:translateY(-2px);
+
+  box-shadow:0 8px 18px rgba(79,70,229,.12);
+}
+
+/* ---------- PREMIUM FOCUS ---------- */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  background:var(--card-bg-solid,#fff);
+  border-color:#4f46e5;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 0 0 4px rgba(79,70,229,.12),
+    0 10px 24px rgba(79,70,229,.18);
+}
+
+/* =========================================
+   SELECT
+========================================= */
+
+.form-group select{
+  cursor:pointer;
+}
+
+/* =========================================
+   AUTOFILL
+========================================= */
+
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--input-text,#111827);
+  -webkit-box-shadow:0 0 0 1000px var(--input-bg,#f8fafc) inset;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.edit-modal-footer{
+  display:flex;
+  justify-content:flex-end;
+  gap:12px;
+
+  padding:22px 28px;
+
+  border-top:1px solid var(--border-color,#e5e7eb);
+  background:var(--card-bg-solid,#fff);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.cancel-button,
+.update-button{
+  min-width:120px;
+  height:46px;
+
+  border-radius:14px;
+  font-size:14px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+/* Cancel */
+
+.cancel-button{
+  border:1px solid var(--border-color,#d1d5db);
+  background:var(--input-bg,#f8fafc);
+  color:var(--text-primary,#374151);
+}
+
+.cancel-button:hover{
+  background:var(--card-bg-solid,#fff);
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+/* Save / Update */
+
+.update-button{
+  border:none;
+  color:#fff;
+
+  background:linear-gradient(135deg,#4f46e5,#2563eb);
+
+  box-shadow:0 10px 22px rgba(79,70,229,.25);
+}
+
+.update-button:hover{
+  transform:translateY(-2px) scale(1.02);
+
+  box-shadow:0 16px 30px rgba(79,70,229,.35);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes popIn{
+  from{
+    opacity:0;
+    transform:scale(.96) translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:700px){
+
+  .modal-overlay{
+    padding:14px;
+  }
+
+  .edit-modal{
+    border-radius:18px;
+    max-height:95vh;
+  }
+
+  .edit-modal-header{
+    padding:20px;
+  }
+
+  .edit-modal-header h2{
+    font-size:21px;
+  }
+
+  .edit-modal-body{
+    grid-template-columns:1fr;
+    padding:20px;
+    gap:18px;
+  }
+
+  .edit-modal-footer{
+    flex-direction:column;
+    padding:18px 20px;
+  }
+
+  .cancel-button,
+  .update-button{
+    width:100%;
+  }
+}

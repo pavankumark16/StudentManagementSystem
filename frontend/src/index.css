@@ -1,0 +1,207 @@
+
+/* =========================================
+   GLOBAL APPLICATION THEME
+   ========================================= */
+
+:root {
+  /* Backgrounds */
+  --bg-primary: #f5f7fb;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #eef2f7;
+
+  /* Text */
+  --text-primary: #172033;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  /* Brand */
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-soft: rgba(79, 70, 229, 0.10);
+
+  /* Cards */
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --card-bg-solid: #ffffff;
+
+  /* Borders */
+  --border-color: rgba(148, 163, 184, 0.18);
+
+  /* Shadows */
+  --shadow-sm:
+    0 4px 12px rgba(15, 23, 42, 0.05);
+
+  --shadow-md:
+    0 10px 30px rgba(15, 23, 42, 0.08);
+
+  --shadow-lg:
+    0 20px 50px rgba(15, 23, 42, 0.12);
+
+  /* Glass effect */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-blur: blur(18px);
+
+  /* Inputs */
+  --input-bg: rgba(248, 250, 252, 0.90);
+  --input-text: #172033;
+  --input-placeholder: #94a3b8;
+
+  /* Sidebar */
+  --sidebar-bg: #111827;
+  --sidebar-text: #cbd5e1;
+  --sidebar-muted: #94a3b8;
+
+  /* Status */
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+}
+
+
+/* =========================================
+   DARK THEME
+   ========================================= */
+
+[data-theme="dark"] {
+
+  /* Backgrounds */
+  --bg-primary: #0b1120;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1e293b;
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Brand */
+  --primary: #818cf8;
+  --primary-hover: #a5b4fc;
+  --primary-soft: rgba(129, 140, 248, 0.14);
+
+  /* Cards */
+  --card-bg: rgba(17, 24, 39, 0.78);
+  --card-bg-solid: #111827;
+
+  /* Borders */
+  --border-color: rgba(148, 163, 184, 0.12);
+
+  /* Shadows */
+  --shadow-sm:
+    0 4px 15px rgba(0, 0, 0, 0.20);
+
+  --shadow-md:
+    0 12px 35px rgba(0, 0, 0, 0.28);
+
+  --shadow-lg:
+    0 25px 60px rgba(0, 0, 0, 0.38);
+
+  /* Glass */
+  --glass-bg: rgba(17, 24, 39, 0.70);
+
+  /* Inputs */
+  --input-bg: rgba(30, 41, 59, 0.75);
+  --input-text: #f8fafc;
+  --input-placeholder: #64748b;
+
+  /* Sidebar */
+  --sidebar-bg: #070b14;
+  --sidebar-text: #cbd5e1;
+  --sidebar-muted: #64748b;
+
+  /* Status */
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+
+/* =========================================
+   BODY
+   ========================================= */
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.06),
+      transparent 30%
+    ),
+    var(--bg-primary);
+
+  color: var(--text-primary);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
+}
+
+
+/* =========================================
+   SELECTION
+   ========================================= */
+
+::selection {
+  background: rgba(79, 70, 229, 0.20);
+  color: var(--text-primary);
+}

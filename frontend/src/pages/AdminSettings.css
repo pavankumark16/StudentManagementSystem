@@ -1,0 +1,186 @@
+.admin-settings-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Header */
+
+.admin-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-settings-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.admin-settings-header p {
+  margin: 6px 0 0;
+  color: var(--secondary-text);
+}
+
+.admin-settings-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Header buttons */
+
+.admin-settings-theme-button,
+.admin-settings-logout,
+.admin-settings-back,
+.admin-settings-option-button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.admin-settings-theme-button {
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.admin-settings-theme-button span {
+  margin-right: 7px;
+}
+
+.admin-settings-logout {
+  background: #dc2626;
+  color: #fff;
+  border: 1px solid #dc2626;
+}
+
+/* Main cards */
+
+.admin-settings-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.admin-settings-card-title {
+  margin-bottom: 22px;
+}
+
+.admin-settings-card-title h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.admin-settings-card-title p {
+  margin: 6px 0 0;
+  color: var(--secondary-text);
+  font-size: 14px;
+}
+
+/* Settings option */
+
+.admin-settings-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.admin-settings-option h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.admin-settings-option p {
+  margin: 0;
+  color: var(--secondary-text);
+  font-size: 14px;
+}
+
+.admin-settings-option-button {
+  flex-shrink: 0;
+  background: #2563eb;
+  color: #fff;
+  border: 1px solid #2563eb;
+}
+
+/* System information */
+
+.admin-settings-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.admin-settings-info {
+  padding: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--background-color);
+}
+
+.admin-settings-info span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--secondary-text);
+  font-size: 13px;
+}
+
+.admin-settings-info strong {
+  font-size: 15px;
+}
+
+/* Back button */
+
+.admin-settings-back {
+  margin-top: 5px;
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .admin-settings-page {
+    padding: 20px;
+  }
+
+  .admin-settings-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .admin-settings-option {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-settings-option-button {
+    width: 100%;
+  }
+
+  .admin-settings-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .admin-settings-actions {
+    width: 100%;
+  }
+
+  .admin-settings-theme-button,
+  .admin-settings-logout {
+    flex: 1;
+  }
+}

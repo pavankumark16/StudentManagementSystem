@@ -1,0 +1,689 @@
+.attendance-page {
+  min-height: 100vh;
+  padding: 32px;
+  background:
+    radial-gradient(
+      circle at top right,
+      var(--primary-soft),
+      transparent 35%
+    ),
+    var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 26px;
+}
+
+.attendance-header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.attendance-header p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.attendance-header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.mark-attendance-button {
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 11px 18px;
+  min-height: 42px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mark-attendance-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.mark-attendance-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.attendance-theme-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.attendance-theme-button:hover {
+  background: var(--bg-tertiary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.attendance-theme-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.attendance-toolbar {
+  display: flex;
+  align-items: center;
+
+  padding: 16px;
+
+  margin-bottom: 20px;
+
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(14px);
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.attendance-search {
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 14px;
+
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.attendance-search:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.attendance-search span {
+  color: var(--text-muted);
+  font-size: 20px;
+}
+
+.attendance-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: var(--text-primary);
+
+  font-size: 14px;
+}
+
+.attendance-search input::placeholder {
+  color: var(--text-muted);
+}
+
+/* =========================
+   TABLE CONTAINER
+========================= */
+
+.attendance-table-container {
+  width: 100%;
+  overflow-x: auto;
+
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(14px);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.attendance-table-container table {
+  width: 100%;
+  min-width: 850px;
+
+  border-collapse: collapse;
+}
+
+.attendance-table-container th {
+  padding: 15px 18px;
+
+  text-align: left;
+
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.attendance-table-container td {
+  padding: 16px 18px;
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+
+  border-top: 1px solid var(--table-border);
+}
+
+.attendance-table-container tbody tr {
+  transition: background 0.2s ease;
+}
+
+.attendance-table-container tbody tr:hover {
+  background: var(--table-hover);
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.attendance-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 75px;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: capitalize;
+}
+
+.attendance-status.present {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.attendance-status.absent {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.attendance-status.late {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.attendance-empty {
+  padding: 45px 20px !important;
+
+  text-align: center !important;
+
+  color: var(--text-muted) !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .attendance-page {
+    padding: 20px;
+  }
+
+  .attendance-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .attendance-header-actions {
+    width: 100%;
+  }
+
+  .attendance-theme-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .attendance-toolbar {
+    padding: 12px;
+  }
+
+  .attendance-search {
+    max-width: none;
+  }
+}
+
+
+
+/* =========================
+   MARK ATTENDANCE MODAL
+========================= */
+
+.attendance-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.55);
+
+  backdrop-filter: blur(6px);
+
+  z-index: 1000;
+}
+
+.attendance-modal {
+  width: 100%;
+  max-width: 560px;
+
+  background: var(--bg-secondary);
+
+  border-radius: 18px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
+  animation: attendanceModalIn 0.2s ease-out;
+}
+
+@keyframes attendanceModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal Header */
+
+.attendance-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 22px 24px;
+
+  background: var(--bg-tertiary);
+}
+
+.attendance-modal-header h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  color: var(--text-primary);
+}
+
+.attendance-modal-header p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: var(--text-secondary);
+}
+
+.attendance-modal-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text-secondary);
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.attendance-modal-close:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Modal Body */
+
+.attendance-modal-body {
+  padding: 24px;
+}
+
+.attendance-form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+.attendance-form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-bottom: 17px;
+}
+
+.attendance-form-group:last-child {
+  margin-bottom: 0;
+}
+
+.attendance-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: var(--text-primary);
+}
+
+.attendance-form-group input,
+.attendance-form-group select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 12px;
+
+  border: 1px solid var(--input-border);
+  border-radius: 9px;
+
+  outline: none;
+
+  background: var(--input-bg);
+  color: var(--text-primary);
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.attendance-form-group input:focus,
+.attendance-form-group select:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px var(--primary-soft);
+
+  background: var(--input-bg);
+}
+
+.attendance-form-group input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Modal Footer */
+
+.attendance-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding: 16px 24px;
+
+  background: var(--bg-tertiary);
+}
+
+.attendance-cancel-button,
+.attendance-save-button {
+  padding: 10px 17px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.attendance-cancel-button {
+  border: 1px solid var(--input-border);
+
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.attendance-cancel-button:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.attendance-save-button {
+  border: none;
+
+  background: var(--primary);
+  color: white;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.attendance-save-button:hover {
+  background: var(--primary-hover);
+
+  transform: translateY(-1px);
+
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================
+   MODAL RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+  .attendance-modal-overlay {
+    padding: 12px;
+  }
+
+  .attendance-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .attendance-modal-header {
+    padding: 18px;
+  }
+
+  .attendance-modal-body {
+    padding: 18px;
+  }
+
+  .attendance-modal-footer {
+    padding: 14px 18px;
+  }
+}
+
+
+
+.attendance-header-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.attendance-back-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.attendance-back-button:hover {
+  background: #f3f4f6;
+}
+
+/* Change Password */
+
+.admin-profile-password {
+  margin-top: 30px;
+  padding: 28px;
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+}
+
+.admin-profile-password-header h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.admin-profile-password-header p {
+  margin: 6px 0 0;
+  color: var(--secondary-text);
+  font-size: 14px;
+}
+
+.admin-profile-password-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.admin-profile-password-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-profile-password-field label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.admin-profile-password-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  outline: none;
+}
+
+.admin-profile-password-field input:focus {
+  border-color: #2563eb;
+  background: #fff;
+  color: #000;
+  box-shadow: none;
+}
+
+.admin-profile-password-button {
+  margin-top: 22px;
+  padding: 11px 18px;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-profile-password-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Password responsive layout */
+
+@media (max-width: 900px) {
+  .admin-profile-password-form {
+    grid-template-columns: 1fr;
+  }
+}
