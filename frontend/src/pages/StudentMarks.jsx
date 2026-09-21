@@ -232,7 +232,7 @@ function StudentMarks({ theme, toggleTheme }) {
                   <th>Faculty</th>
                 </tr>
               </thead>
-
+ 
               <tbody>
                 {marks.map((item, index) => (
                   <tr key={item.id}>
