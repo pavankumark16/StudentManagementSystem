@@ -25,6 +25,10 @@ function Attendance({ theme, toggleTheme }) {
 
   const [showMarkAttendance, setShowMarkAttendance] = useState(false);
 
+  const [editingAttendance, setEditingAttendance] = useState(null);
+
+  const [deleteAttendanceId, setDeleteAttendanceId] = useState(null);
+
   const [newAttendance, setNewAttendance] = useState({
     attendanceDate: "",
     status: "PRESENT",
@@ -78,6 +82,42 @@ function Attendance({ theme, toggleTheme }) {
     }
   };
 
+  const handleDeleteAttendance = async (id) => {
+    try {
+      await apiRequest(`/attendances/${id}`, {
+        method: "DELETE",
+      });
+
+      setAttendance((current) => current.filter((record) => record.id !== id));
+
+      setNotification({
+        type: "success",
+        message: "Attendance deleted successfully",
+      });
+    } catch (error) {
+      console.error("Failed to delete attendance:", error);
+
+      setNotification({
+        type: "error",
+        message: "Failed to delete attendance",
+      });
+    }
+  };
+
+  const handleEditAttendance = (record) => {
+    setEditingAttendance(record);
+
+    setNewAttendance({
+      attendanceDate: record.attendanceDate || "",
+      status: record.status || "PRESENT",
+      studentId: record.student?.stdRollNo?.toString() || "",
+      subjectId: record.subject?.id?.toString() || "",
+      facultyId: "",
+    });
+
+    setShowMarkAttendance(true);
+  };
+
   const markAttendance = async () => {
     if (!newAttendance.studentId) {
       setNotification({
@@ -115,14 +155,28 @@ function Attendance({ theme, toggleTheme }) {
         },
       };
 
-      const savedAttendance = await apiRequest("/attendances", {
-        method: "POST",
-        body: JSON.stringify(payload),
-      });
+      const isEditing = editingAttendance !== null;
 
-      setAttendance((current) => [...current, savedAttendance]);
+      const savedAttendance = await apiRequest(
+        isEditing ? `/attendances/${editingAttendance.id}` : "/attendances",
+        {
+          method: isEditing ? "PUT" : "POST",
+          body: JSON.stringify(payload),
+        },
+      );
+
+      if (isEditing) {
+        setAttendance((current) =>
+          current.map((record) =>
+            record.id === savedAttendance.id ? savedAttendance : record,
+          ),
+        );
+      } else {
+        setAttendance((current) => [...current, savedAttendance]);
+      }
 
       setShowMarkAttendance(false);
+      setEditingAttendance(null);
 
       setNewAttendance({
         attendanceDate: "",
@@ -134,7 +188,9 @@ function Attendance({ theme, toggleTheme }) {
 
       setNotification({
         type: "success",
-        message: "Attendance marked successfully",
+        message: isEditing
+          ? "Attendance updated successfully"
+          : "Attendance marked successfully",
       });
     } catch (error) {
       console.error("Failed to mark attendance:", error);
@@ -172,13 +228,23 @@ function Attendance({ theme, toggleTheme }) {
           <div className="attendance-modal">
             <div className="attendance-modal-header">
               <div>
-                <h2>Mark Attendance</h2>
-                <p>Record attendance for a student</p>
+                <h2>
+                  {editingAttendance ? "Edit Attendance" : "Mark Attendance"}
+                </h2>
+
+                <p>
+                  {editingAttendance
+                    ? "Update the attendance record"
+                    : "Record attendance for a student"}
+                </p>
               </div>
 
               <button
                 className="attendance-modal-close"
-                onClick={() => setShowMarkAttendance(false)}
+                onClick={() => {
+                  setShowMarkAttendance(false);
+                  setEditingAttendance(null);
+                }}
               >
                 ×
               </button>
@@ -268,7 +334,10 @@ function Attendance({ theme, toggleTheme }) {
             <div className="attendance-modal-footer">
               <button
                 className="attendance-cancel-button"
-                onClick={() => setShowMarkAttendance(false)}
+                onClick={() => {
+                  setShowMarkAttendance(false);
+                  setEditingAttendance(null);
+                }}
               >
                 Cancel
               </button>
@@ -277,7 +346,46 @@ function Attendance({ theme, toggleTheme }) {
                 className="attendance-save-button"
                 onClick={markAttendance}
               >
-                Mark Attendance
+                {editingAttendance ? "Update Attendance" : "Mark Attendance"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {deleteAttendanceId !== null && (
+        <div className="attendance-confirm-overlay">
+          <div className="attendance-confirm-modal">
+            <div className="attendance-confirm-icon">⚠</div>
+
+            <div className="attendance-confirm-content">
+              <h2>Delete Attendance?</h2>
+
+              <p>
+                Are you sure you want to delete this attendance record? This
+                action cannot be undone.
+              </p>
+            </div>
+
+            <div className="attendance-confirm-actions">
+              <button
+                className="attendance-confirm-cancel"
+                onClick={() => setDeleteAttendanceId(null)}
+              >
+                Cancel
+              </button>
+
+              <button
+                className="attendance-confirm-delete"
+                onClick={async () => {
+                  const id = deleteAttendanceId;
+
+                  setDeleteAttendanceId(null);
+
+                  await handleDeleteAttendance(id);
+                }}
+              >
+                Delete
               </button>
             </div>
           </div>
@@ -337,6 +445,7 @@ function Attendance({ theme, toggleTheme }) {
               <th>Date</th>
               <th>Status</th>
               <th>Faculty</th>
+              <th>Actions</th>
             </tr>
           </thead>
 
@@ -373,11 +482,27 @@ function Attendance({ theme, toggleTheme }) {
                       ? `${record.faculty.firstName} ${record.faculty.lastName}`
                       : "-"}
                   </td>
+
+                  <td className="attendance-actions">
+                    <button
+                      className="attendance-edit-button"
+                      onClick={() => handleEditAttendance(record)}
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      className="attendance-delete-button"
+                      onClick={() => setDeleteAttendanceId(record.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="attendance-empty">
+                <td colSpan="7" className="attendance-empty">
                   No attendance records found.
                 </td>
               </tr>
